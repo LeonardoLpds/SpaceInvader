@@ -9,6 +9,8 @@ var pre_shot      = preload("res://Instances/EnemyShot.tscn")
 var pre_explosion = preload("res://Instances/EnemyExplosion.tscn")
 var direction     = 1
 
+signal enemy_down(obj)
+
 func _ready():
 	get_node("TimerShot").start()
 	for enemy in get_node("Enemies").get_children():
@@ -48,6 +50,7 @@ func _on_timer_move_timeout():
 		translate(SPEED * direction)
 
 func on_enemy_destroyed(enemy):
+	emit_signal("enemy_down", enemy)
 	var explosion = pre_explosion.instance()
 	get_parent().add_child(explosion)
 	explosion.set_global_pos(enemy.get_global_pos())
