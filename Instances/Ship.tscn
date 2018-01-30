@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://Script/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Ship-sheet.png" type="Texture" id=2]
@@ -38,9 +38,25 @@ points = Vector2Array( 0.518889, -2.96975, -1.45821, -0.992648, -1.45821, -3.014
 custom_solver_bias = 0.0
 points = Vector2Array( 0.518889, -3.9583, 0.518889, -2.96975, -0.424728, -3.03715, -0.424728, -3.9583 )
 
+[sub_resource type="Animation" id=8]
+
+resource/name = "explode"
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 2, 1, 2, 1, 2, 1, 2 ]
+}
+
 [node name="Ship" type="Area2D"]
 
-editor/display_folded = true
 transform/pos = Vector2( 90, 267 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
@@ -82,5 +98,16 @@ build_mode = 0
 polygon = Vector2Array( 7.50616, 4.01751, 7.50616, 0.0408382, 6.5176, 0.0408382, 6.5176, -0.947714, 1.52991, -0.947714, 1.52991, -2.96975, 0.518889, -2.96975, 0.518889, -3.9583, -0.424728, -3.9583, -0.424728, -3.03715, -1.45821, -3.01469, -1.45821, -0.992648, -6.49084, -0.992648, -6.49084, -0.00409603, -7.45693, -0.00409603, -7.45693, 3.97258 )
 shape_range = Vector2( 0, 6 )
 trigger = false
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/explode = SubResource( 8 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
 

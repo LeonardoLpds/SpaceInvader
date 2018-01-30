@@ -5,6 +5,10 @@ const SPEED = 100
 var direction = 0
 var pre_shot  = preload("res://Instances/ShipShot.tscn")
 var shooting  = false
+var alive     = true
+
+signal destroyed
+signal respawn
 
 func _ready():
 	set_fixed_process(true)
@@ -33,3 +37,18 @@ func _fixed_process(delta):
 		shot.set_global_pos(get_global_pos())
 
 	shooting = shoot
+	
+func destroy(obj):
+	if alive:
+		alive = false
+		set_fixed_process(false)
+		
+		emit_signal("destroyed")
+		get_node("Animation").play("explode")
+		yield(get_node("Animation"), "finished")
+		
+		emit_signal("respawn")
+		set_fixed_process(true)
+		alive = true
+		get_node("Sprite").set_frame(0)
+		
