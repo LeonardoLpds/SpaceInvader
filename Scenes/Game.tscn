@@ -1,15 +1,201 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Instances/Ship.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Instances/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Script/EnemyGroup.gd" type="Script" id=2]
+[ext_resource path="res://Instances/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Instances/Shield.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Node"]
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
+[node name="EnemyGroup" type="Node2D" parent="."]
 
-transform/pos = Vector2( 33.2868, 32.1188 )
-type = 0
+editor/display_folded = true
+script/script = ExtResource( 2 )
+
+[node name="Enemies" type="Node2D" parent="EnemyGroup"]
+
+editor/display_folded = true
+
+[node name="Enemy" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 32, 36 )
+
+[node name="Enemy1" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 48, 36 )
+
+[node name="Enemy2" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 64, 36 )
+
+[node name="Enemy3" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 80, 36 )
+
+[node name="Enemy4" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 96, 36 )
+
+[node name="Enemy5" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 112, 36 )
+
+[node name="Enemy6" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 128, 36 )
+
+[node name="Enemy7" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 144, 36 )
+
+[node name="Enemy8" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 32, 48 )
+type = 1
+
+[node name="Enemy9" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 48, 48 )
+type = 1
+
+[node name="Enemy10" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 64, 48 )
+type = 1
+
+[node name="Enemy11" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 80, 48 )
+type = 1
+
+[node name="Enemy12" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 96, 48 )
+type = 1
+
+[node name="Enemy13" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 112, 48 )
+type = 1
+
+[node name="Enemy14" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 128, 48 )
+type = 1
+
+[node name="Enemy15" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 144, 48 )
+type = 1
+
+[node name="Enemy16" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 32, 60 )
+type = 2
+
+[node name="Enemy17" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 48, 60 )
+type = 2
+
+[node name="Enemy18" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 64, 60 )
+type = 2
+
+[node name="Enemy19" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 80, 60 )
+type = 2
+
+[node name="Enemy20" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 96, 60 )
+type = 2
+
+[node name="Enemy21" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 112, 60 )
+type = 2
+
+[node name="Enemy22" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 128, 60 )
+type = 2
+
+[node name="Enemy23" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 144, 60 )
+type = 2
+
+[node name="Enemy24" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 32, 72 )
+
+[node name="Enemy25" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 48, 72 )
+
+[node name="Enemy26" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 64, 72 )
+
+[node name="Enemy27" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 80, 72 )
+
+[node name="Enemy28" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 96, 72 )
+
+[node name="Enemy29" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 112, 72 )
+
+[node name="Enemy30" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 128, 72 )
+
+[node name="Enemy31" parent="EnemyGroup/Enemies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 144, 72 )
+
+[node name="TimerShot" type="Timer" parent="EnemyGroup"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="TimerMove" type="Timer" parent="EnemyGroup"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="Shields" type="Node" parent="."]
+
+[node name="Shield" parent="Shields" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 36, 240 )
+
+[node name="Shield1" parent="Shields" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 72, 240 )
+
+[node name="Shield2" parent="Shields" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 108, 240 )
+
+[node name="Shield3" parent="Shields" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 144, 240 )
+
+[connection signal="timeout" from="EnemyGroup/TimerShot" to="EnemyGroup" method="_on_timer_shot_timeout"]
+
+[connection signal="timeout" from="EnemyGroup/TimerMove" to="EnemyGroup" method="_on_timer_move_timeout"]
 
 

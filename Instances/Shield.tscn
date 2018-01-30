@@ -1,47 +1,45 @@
 [gd_scene load_steps=10 format=1]
 
-[ext_resource path="res://Script/Ship.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Ship-sheet.png" type="Texture" id=2]
+[ext_resource path="res://Script/Shield.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/barreira_sheet.png" type="Texture" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 7.50616, 0.0408382, 7.50616, 4.01751, -7.45693, 3.97258, 6.5176, 0.0408382 )
+points = Vector2Array( 8, -3, 8, 5, 6, 5, 6, 4, 7, -3 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 6.5176, 0.0408382, -7.45693, 3.97258, -7.45693, -0.00409603, -6.49084, -0.00409603 )
+points = Vector2Array( 6, 4, 5, 4, 5, 3, 7, -3 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 6.5176, -0.947714, 6.5176, 0.0408382, -6.49084, -0.00409603, 1.52991, -0.947714 )
+points = Vector2Array( -5, 3, -5, 4, -6, 4, -8, -3, -7, -3 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 1.52991, -0.947714, -6.49084, -0.00409603, -6.49084, -0.992648, -1.45821, -0.992648 )
+points = Vector2Array( -6, 4, -6, 5, -8, 5, -8, -3 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 1.52991, -2.96975, 1.52991, -0.947714, -1.45821, -0.992648, 0.518889, -2.96975 )
+points = Vector2Array( -7, -3, -7, -4, -6, -4, -5, 3 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0.518889, -2.96975, -1.45821, -0.992648, -1.45821, -3.01469, -0.424728, -3.03715 )
+points = Vector2Array( -6, -4, -6, -5, 6, -5, 6, -4, -5, 3 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0.518889, -3.9583, 0.518889, -2.96975, -0.424728, -3.03715, -0.424728, -3.9583 )
+points = Vector2Array( -5, 3, 6, -4, 7, -4, 7, -3, 5, 3 )
 
-[node name="Ship" type="Area2D"]
+[node name="Shield" type="Area2D"]
 
-editor/display_folded = true
-transform/pos = Vector2( 90, 267 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -68,18 +66,19 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision/layers = 3
 collision/mask = 0
 script/script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
 texture = ExtResource( 2 )
-hframes = 3
+hframes = 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 build_mode = 0
-polygon = Vector2Array( 7.50616, 4.01751, 7.50616, 0.0408382, 6.5176, 0.0408382, 6.5176, -0.947714, 1.52991, -0.947714, 1.52991, -2.96975, 0.518889, -2.96975, 0.518889, -3.9583, -0.424728, -3.9583, -0.424728, -3.03715, -1.45821, -3.01469, -1.45821, -0.992648, -6.49084, -0.992648, -6.49084, -0.00409603, -7.45693, -0.00409603, -7.45693, 3.97258 )
+polygon = Vector2Array( 8, 5, 8, -3, 7, -3, 7, -4, 6, -4, 6, -5, -6, -5, -6, -4, -7, -4, -7, -3, -8, -3, -8, 5, -6, 5, -6, 4, -5, 4, -5, 3, 5, 3, 5, 4, 6, 4, 6, 5 )
 shape_range = Vector2( 0, 6 )
 trigger = false
 

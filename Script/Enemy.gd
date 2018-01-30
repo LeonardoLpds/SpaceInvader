@@ -4,6 +4,8 @@ extends Area2D
 export(int, "A", "B", "C") var type = 0 setget set_type
 
 var score      = 0
+var frame      = 0
+
 var attributes = [
 	{
 		texture = preload("res://Sprites/InvaderA_sheet.png"),
@@ -31,6 +33,14 @@ func set_type(value):
 	type = value
 	if is_inside_tree() and get_tree().is_editor_hint():
 		update()
+
+func next_frame():
+	if frame == 0:
+		frame = 1
+	else:
+		frame = 0
+		
+	get_node("Sprite").set_frame(frame)
 
 func destroy(obj):
 	queue_free()
