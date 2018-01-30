@@ -5,8 +5,9 @@ const MAX_TIME       = 0.1
 const VERTICAL_SPEED = Vector2(0, 8)
 const ACCELERATION   = 0.1
 
-var pre_shot      = preload("res://Instances/EnemyShot.tscn")
-var pre_explosion = preload("res://Instances/EnemyExplosion.tscn")
+var pre_shot        = preload("res://Instances/EnemyShot.tscn")
+var pre_explosion   = preload("res://Instances/EnemyExplosion.tscn")
+var pre_mother_ship = preload("res://Instances/MotherShip.tscn")
 var direction     = 1
 
 signal enemy_down(obj)
@@ -15,6 +16,8 @@ func _ready():
 	get_node("TimerShot").start()
 	for enemy in get_node("Enemies").get_children():
 		enemy.connect("destroyed", self, "on_enemy_destroyed")
+		
+	restart_timer_mother_ship()
 	
 func shoot():
 	var enemies_count = get_node("Enemies").get_child_count()
@@ -54,3 +57,13 @@ func on_enemy_destroyed(enemy):
 	var explosion = pre_explosion.instance()
 	get_parent().add_child(explosion)
 	explosion.set_global_pos(enemy.get_global_pos())
+
+func _on_timer_mother_ship_timeout():
+	var mother_ship = pre_mother_ship.instance()
+	mother_ship.connect("destroyed", self, "on_enemy_destroyed")
+	get_parent().add_child(mother_ship)
+	restart_timer_mother_ship()
+
+func restart_timer_mother_ship():
+	get_node("TimerMotherShip").set_wait_time(rand_range(4, 10))
+	get_node("TimerMotherShip").start()
