@@ -5,11 +5,14 @@ const MAX_TIME       = 0.1
 const VERTICAL_SPEED = Vector2(0, 8)
 const ACCELERATION   = 0.1
 
-var pre_shot  = preload("res://Instances/EnemyShot.tscn")
-var direction = 1
+var pre_shot      = preload("res://Instances/EnemyShot.tscn")
+var pre_explosion = preload("res://Instances/EnemyExplosion.tscn")
+var direction     = 1
 
 func _ready():
 	get_node("TimerShot").start()
+	for enemy in get_node("Enemies").get_children():
+		enemy.connect("destroyed", self, "on_enemy_destroyed")
 	
 func shoot():
 	var enemies_count = get_node("Enemies").get_child_count()
@@ -43,3 +46,8 @@ func _on_timer_move_timeout():
 			get_node("TimerMove").set_wait_time(time - ACCELERATION)
 	else:
 		translate(SPEED * direction)
+
+func on_enemy_destroyed(enemy):
+	var explosion = pre_explosion.instance()
+	get_parent().add_child(explosion)
+	explosion.set_global_pos(enemy.get_global_pos())

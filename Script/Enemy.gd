@@ -3,6 +3,8 @@ extends Area2D
 
 export(int, "A", "B", "C") var type = 0 setget set_type
 
+signal destroyed(obj)
+
 var score      = 0
 var frame      = 0
 
@@ -43,4 +45,5 @@ func next_frame():
 	get_node("Sprite").set_frame(frame)
 
 func destroy(obj):
+	emit_signal("destroyed", self)
 	queue_free()
